@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block jumbotron %}
+<div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Administrator Pages</h1>
+    <p class="col-md-8 fs-4">Otomatisasi Data Penduduk seperti: Kelurahan, Kecamatan, dan lainnya</p>
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <form action="{% url 'administrator:input_otomatis' %}" method='post'>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary" value='data_kecamatan' name='btnSubmit'>Isi
+                            Otomatis Data Kecamatan</button>
+                    </form>
+                </li>
+                <li class="list-group-item">
+                    <form action="{% url 'administrator:input_otomatis' %}" method='post'>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" value='data_kelurahan' name='btnSubmit'>Isi
+                            Otomatis Data Kelurahan</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock jumbotron %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="row">
+    <div class="col">
+        <div class="alert alert-{{message.type}} alert-dismissible fade show" role="alert">
+            <strong>{{message.heading}}!</strong> {{ message.msg|safe }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock content %}

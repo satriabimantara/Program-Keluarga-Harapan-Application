@@ -1,0 +1,29 @@
+{% extends 'dataset/index.html' %}
+
+
+{% block content %}
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Program Keluarga Harapan Dataset</h4>
+</div>
+<table class="table" id="table-lihat-data">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nomor</th>
+            {% for feature in pkh.features %}
+            <th scope="col">{{feature}}</th>
+            {% endfor %}
+            <th scope="col">Nominal (Rp.)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for datum in pkh.data %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            {% for x in datum %}
+            <td>{{x}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

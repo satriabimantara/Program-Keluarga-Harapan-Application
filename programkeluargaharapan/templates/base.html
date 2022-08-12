@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Satria Bimantara">
+        <meta name="generator" content="Hugo 0.88.1">
+        <title>{{page_title}}</title>
+
+        {% include 'snippets/styles.html' %}
+    </head>
+
+    <body class="d-flex flex-column h-100">
+
+        <header>
+            <!-- Fixed navbar -->
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'index' %}">Teknik Informatika | Udayana</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'index' %}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'dataset:index' %}">Data</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'evaluasimodel:index' %}">Prediksi Model</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                            {% block navbar-link %}
+
+                            {% endblock navbar-link %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Administrator</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                                    <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Site</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'administrator:index' %}">Pages</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Begin page content -->
+        <main class="flex-shrink-0 row mt-5">
+            <div class="p-5 mb-4 bg-light rounded-3">
+                {% block jumbotron %}{% endblock jumbotron %}
+            </div>
+            <div class="pb-3 pt-0 px-5">
+                {% block content %}{% endblock content %}
+            </div>
+
+        </main>
+
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container">
+                <span class="text-muted"> Satria Bimantara &copy; 2022</span>
+            </div>
+        </footer>
+        {% include 'snippets/scripts.html' %}
+    </body>
+
+</html>

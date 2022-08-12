@@ -1,0 +1,35 @@
+{% extends 'dataset/index.html' %}
+
+
+{% block content %}
+<div class="alert alert-primary" role="alert">
+    <h4 class="alert-heading">Data Latih Program Keluarga Harapan (PKH)</h4>
+</div>
+<table class="table" id="table-data-latih">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Nomor</th>
+
+            {% for feature in training.features %}
+            <th scope="col">{{feature}}</th>
+            {% endfor %}
+            <th scope="col">Nominal (Rp.)</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for datum in training.data %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+
+            {% for x in datum %}
+            <td>{{x}}</td>
+            {% endfor %}
+
+        </tr>
+        {% endfor %}
+
+
+    </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block navbar-link %}
+{% comment %} <li class="nav-item">
+    <a class="nav-link" href="{% url 'dataset:lihat' %}">Semua Data</a>
+</li>
+<li class="nav-item ">
+    <a class="nav-link" href="{% url 'dataset:training' %}">Data Latih</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'dataset:testing' %}">Data Uji</a>
+</li> {% endcomment %}
+{% endblock navbar-link %}
+
+
+{% block jumbotron %}
+<div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Data Penelitian</h1>
+    <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ullam earum, in vitae
+        recusandae minima pariatur excepturi cumque omnis delectus temporibus voluptates, impedit quisquam unde modi
+        nostrum perferendis quibusdam repellat.</p>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="{% url 'dataset:lihat' %}" class="btn btn-success">Semua Data</a>
+        <a href="{% url 'dataset:training' %}" class="btn btn-secondary">Data Latih</a>
+        <a href="{% url 'dataset:testing' %}" class="btn btn-info">Data Uji</a>
+    </div>
+</div>
+{% endblock jumbotron %}

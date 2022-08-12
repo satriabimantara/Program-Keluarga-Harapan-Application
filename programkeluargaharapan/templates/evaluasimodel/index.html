@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block navbar-link %}
+{% comment %} <li class="nav-item active">
+    <a class="nav-link" href="{% url 'evaluasimodel:datauji' %}">Evaluasi Data Uji</a>
+</li> {% endcomment %}
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'evaluasimodel:evaldatabaru' %}">Evaluasi Data Baru</a>
+</li>
+{% endblock navbar-link %}
+
+
+{% block jumbotron %}
+<div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Evaluasi Model Machine Learning Artificial Neural Network (Multi Layer Perceptron)
+    </h1>
+    <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis iusto quisquam cupiditate
+        officiis eligendi pariatur, consectetur enim ratione, et harum exercitationem ipsum accusamus rerum dolorem
+        provident porro nulla, consequuntur reiciendis!</p>
+</div>
+{% endblock jumbotron %}
+
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="row">
+    <div class="col">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong>{{message.tags.capitalize}}!</strong> {{ message|safe }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{% endif %}
+
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Daftar Data Penduduk Baru</h4>
+    <p>Data penduduk pada tabel di bawah ini adalah data yang telah diinput dan diprediksi oleh model machine learning
+        terkait nominal bantuan yang seharusnya diterima</p>
+</div>
+<table class="table table-hover" id='table-penduduk'>
+    <thead>
+        <tr>
+            <th scope="col">Nomor</th>
+            <th scope="col">NIK</th>
+            <th scope="col">Nominal (Rp.)</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Alamat</th>
+            <th scope="col">Kelurahan</th>
+            <th scope="col">Kecamatan</th>
+            {% for num_col in numerical_attributes %}
+            <th scope="col">{{num_col | capfirst}}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for penduduk  in all_data_penduduk %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{penduduk.nik}}</td>
+            <td>{{penduduk.prediksi_bantuan}}</td>
+            <td>{{penduduk.nama_lengkap}}</td>
+            <td>{{penduduk.alamat}}</td>
+            <td>{{penduduk.kelurahan.nama_kelurahan}}</td>
+            <td>{{penduduk.kecamatan.nama_kecamatan}}</td>
+            <td>{{penduduk.jumlah_anak_sd}}</td>
+            <td>{{penduduk.jumlah_anak_smp}}</td>
+            <td>{{penduduk.jumlah_anak_sma}}</td>
+            <td>{{penduduk.jumlah_ibu_hamil}}</td>
+            <td>{{penduduk.jumlah_balita}}</td>
+            <td>{{penduduk.jumlah_balita_anakprasekolah}}</td>
+            <td>{{penduduk.jumlah_lanjut_usia}}</td>
+            <td>{{penduduk.jumlah_penyandang_disabilitas}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
