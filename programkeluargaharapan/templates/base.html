@@ -45,7 +45,8 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">Administrator</a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
                                     <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Site</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'administrator:index' %}">Pages</a></li>
+                                    {% comment %} <li><a class="dropdown-item"
+                                            href="{% url 'administrator:index' %}">Pages</a></li> {% endcomment %}
                                 </ul>
                             </li>
                         </ul>

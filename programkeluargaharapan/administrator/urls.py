@@ -4,6 +4,6 @@ from .views import AdministratorIndexView, InputOtomatisDataAtribut
 app_name = 'administrator'
 urlpatterns = [
     path('', AdministratorIndexView.as_view(), name='index'),
-    path('input_data_atribut/',
-         InputOtomatisDataAtribut.as_view(), name='input_otomatis')
+    # path('input_data_atribut/',
+    #      InputOtomatisDataAtribut.as_view(), name='input_otomatis')
 ]
