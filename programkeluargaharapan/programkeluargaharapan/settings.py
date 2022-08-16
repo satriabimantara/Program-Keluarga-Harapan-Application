@@ -25,12 +25,19 @@ DATASET_DIR = os.path.join(SCRIPTS_DIR, 'dataset')
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0+vc72fv%y-r7*1^f@hqwnei&12e2fd2q^trggq1(%seo^+)8l'
+# SECRET_KEY = 'django-insecure-0+vc72fv%y-r7*1^f@hqwnei&12e2fd2q^trggq1(%seo^+)8l'
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY', 'django-insecure-0+vc72fv%y-r7*1^f@hqwnei&12e2fd2q^trggq1(%seo^+)8l')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'keluargaharapan.herokuapp.com'
+]
 
 
 # Application definition
@@ -49,6 +56,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

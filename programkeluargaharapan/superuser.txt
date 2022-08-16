@@ -1,3 +1,9 @@
 username: satriabimantara
 password: @Satria12345
 email: satriabimantara34@gmail.com
+
+-- remote superuser
+
+username: superadmin
+password: Admin2000
+email: satriabimantara34@gmail.com
