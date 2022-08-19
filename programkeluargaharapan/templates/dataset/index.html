@@ -16,9 +16,9 @@
 {% block jumbotron %}
 <div class="container-fluid py-5">
     <h1 class="display-5 fw-bold">Data Penelitian</h1>
-    <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ullam earum, in vitae
-        recusandae minima pariatur excepturi cumque omnis delectus temporibus voluptates, impedit quisquam unde modi
-        nostrum perferendis quibusdam repellat.</p>
+    <p class="col-md-8 fs-4">Data penelitian adalah data yang digunakan untuk melatih model ANN. Pada data penelitian
+        ini akan dibagi menjadi dua, yaitu data latih dan data uji. Data latih digunakan untuk melatih model, sementara
+        data uji digunakan untuk menguji model yang sudah dilatih.</p>
     <div class="btn-group" role="group" aria-label="Basic example">
         <a href="{% url 'dataset:lihat' %}" class="btn btn-success">Semua Data</a>
         <a href="{% url 'dataset:training' %}" class="btn btn-secondary">Data Latih</a>
