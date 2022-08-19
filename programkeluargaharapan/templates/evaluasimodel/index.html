@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block navbar-link %}
 {% comment %} <li class="nav-item active">
     <a class="nav-link" href="{% url 'evaluasimodel:datauji' %}">Evaluasi Data Uji</a>
@@ -13,9 +14,8 @@
 <div class="container-fluid py-5">
     <h1 class="display-5 fw-bold">Evaluasi Model Machine Learning Artificial Neural Network (Multi Layer Perceptron)
     </h1>
-    <p class="col-md-8 fs-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis iusto quisquam cupiditate
-        officiis eligendi pariatur, consectetur enim ratione, et harum exercitationem ipsum accusamus rerum dolorem
-        provident porro nulla, consequuntur reiciendis!</p>
+    <p class="col-md-8 fs-4">Bagian ini adalah proses prediksi nilai PKH, silakan masukkan nilai-nilai parameter dari
+        data rumah tangga yang dinilai</p>
 </div>
 {% endblock jumbotron %}
 
@@ -45,7 +45,6 @@
         <tr>
             <th scope="col">Nomor</th>
             <th scope="col">NIK</th>
-            <th scope="col">Nominal (Rp.)</th>
             <th scope="col">Nama</th>
             <th scope="col">Alamat</th>
             <th scope="col">Kelurahan</th>
@@ -53,6 +52,7 @@
             {% for num_col in numerical_attributes %}
             <th scope="col">{{num_col | capfirst}}</th>
             {% endfor %}
+            <th scope="col">Nominal (Rp.)</th>
         </tr>
     </thead>
     <tbody>
@@ -61,7 +61,6 @@
         <tr>
             <th scope="row">{{forloop.counter}}</th>
             <td>{{penduduk.nik}}</td>
-            <td>{{penduduk.prediksi_bantuan}}</td>
             <td>{{penduduk.nama_lengkap}}</td>
             <td>{{penduduk.alamat}}</td>
             <td>{{penduduk.kelurahan.nama_kelurahan}}</td>
@@ -74,6 +73,7 @@
             <td>{{penduduk.jumlah_balita_anakprasekolah}}</td>
             <td>{{penduduk.jumlah_lanjut_usia}}</td>
             <td>{{penduduk.jumlah_penyandang_disabilitas}}</td>
+            <td>{{penduduk.prediksi_bantuan|intcomma }}</td>
         </tr>
         {% endfor %}
     </tbody>
