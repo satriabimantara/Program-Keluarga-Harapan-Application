@@ -135,10 +135,10 @@ class EvaluasiModelDataBaru(SuccessMessageMixin, CreateView):
         prediksi_bantuan = self.multilayerperceptron.predict(X_inputs)
 
         # save predicted prediksi_bantuan into instance object
-        # print(prediksi_bantuan)
+        print(prediksi_bantuan)
         # print(instance)
         # print(cleaned_data)
-        instance.prediksi_bantuan = round(prediksi_bantuan[0], 4)
+        instance.prediksi_bantuan = prediksi_bantuan[0]
         instance.save()
         return super().form_valid(form)
 

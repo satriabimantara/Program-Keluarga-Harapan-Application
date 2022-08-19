@@ -101,7 +101,7 @@ class DataPenduduk(models.Model):
     prediksi_bantuan = models.DecimalField(
         'Total Bantuan diterima (Rp.)',
         max_digits=20,
-        decimal_places=4,
+        decimal_places=2,
         null=True,
         blank=True,
     )
